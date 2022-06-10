@@ -7,10 +7,13 @@
     <title>1.1 exercise </title>
 </head>
 <body>
+    <h1>Fetching a poem</h1>
     <p id="poem"></p>
 
     <script>
-        getPoem().then(response => {
+        console.log('about to fetch a poem')
+        getPoem()
+        .then(response => {
             console.log('yay');
         })
         .catch(error => {
