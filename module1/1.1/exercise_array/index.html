@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercise array</title>
+</head>
+<body>
+    <h1>Fetching rainbows</h1>
+
+    <script>
+        console.log('fetching a array of images');
+        
+        const namesOfRainbows = [
+            'images/daniele-levis-pelusi-311027-unsplash.jpeg',
+            'images/guy-stevens-746794-unsplash.jpeg',
+            'images/sharon-pittaway-98257-unsplash.jpeg'
+        ];
+
+        getArrayOfImages(namesOfRainbows)
+        .then(response => {
+            console.log('working');
+        })
+        .catch(error => {
+            console.log('error :(');
+            console.error(error);
+        });
+
+        async function getArrayOfImages(namesOfRainbows){
+            for(let name of namesOfRainbows){
+                const response = await fetch(name);
+                const blob = await response.blob();
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(blob);
+                img.width = '200';
+                document.body.append(img);
+            };
+        };
+
+
+    </script>
+</body>
+</html>
