@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+
+    <style>
+        #issMap {
+            height: 400px;
+            width: 700px;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data selfie App</h1>
+
+    <p>This is a Data Selfie App inspired by Joey Lee's app</p>
+    <a href="welcome.html"><p>Go to Welcome Page</p></a>
+    <a href="sub.html"><p>Go to Farewell Page</p></a>
+    <h2>Showing user his location using leaflet.js</h2>
+    <p>
+        latitude: <span id="lat"></span>&deg;<br>
+        longitude: <span id="lon"></span>&deg;<br>
+    </p>
+    <button id="show">Show me my location</button>
+    
+    <div id="issMap"></div>
+    <script>
+        if ('geolocation' in navigator) {
+            console.log('geolocation available');
+
+            navigator.geolocation.getCurrentPosition(position => {
+                // console.log(position);
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                document.getElementById('lat').textContent = lat.toFixed(2);
+                document.getElementById('lon').textContent = lon.toFixed(2);
+
+            });
+        }else{
+            console.log('geolocation unavailable');
+        }
+    </script>
+</body>
+</html>

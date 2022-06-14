@@ -1,0 +1,19 @@
+{
+  "name": "2.1",
+  "version": "1.0.0",
+  "description": "showing user his location using express and leaflet.js ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "location",
+    "geolocation",
+    "leaflet.js"
+  ],
+  "author": "Samuel Ujazda",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
