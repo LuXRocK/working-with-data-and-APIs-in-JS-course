@@ -20,6 +20,7 @@ app.post('/api', (request, response) => {
         status: 'succes',
         timestamp: timestamp,
         latitude: data.lat,
-        longitude: data.lon
+        longitude: data.lon,
+        fruit: data.fruit
     });
 });
