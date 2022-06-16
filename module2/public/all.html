@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data Selfie App</h1>
+
+    <script>
+        getData();
+
+        async function getData(){
+            const response = await fetch('/api');
+            const data = await response.json();
+
+            for (item of data) {
+                const root = document.createElement('div');
+                const fruit = document.createElement('div');
+                const geo = document.createElement('div');
+                const date = document.createElement('div');
+
+                fruit.textContent = `fruit: ${item.fruit}`;
+                geo.textContent = `${item.lat}°, ${item.lon}°`;
+                const dateString = new Date(item.timestamp).toLocaleString();
+                date.textContent = dateString;
+
+                root.append(fruit, geo, date);
+                document.body.append(root);
+            }
+            console.log(data);
+        };
+
+    </script>
+</body>
+</html>
