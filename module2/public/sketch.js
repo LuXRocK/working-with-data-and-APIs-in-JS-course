@@ -42,17 +42,18 @@ function setup() {
           console.log('geolocation not available');
         }   
 
-        function keyPressed() {
-            if (key == 'c') {
-              background(0);
-            }
-          }
-          
-        function draw() {
-            stroke(255);
-            strokeWeight(8);
-            if (mouseIsPressed) {
-              line(pmouseX, pmouseY, mouseX, mouseY);
-            }
-          }
+
+}
+function keyPressed() {
+  if (key == 'c') {
+    background(0);
+  }
+}
+
+function draw() {
+  stroke(255);
+  strokeWeight(8);
+  if (mouseIsPressed) {
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  }
 }
