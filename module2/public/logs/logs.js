@@ -11,14 +11,16 @@ async function getData(){
         const geo = document.createElement('div');
         const date = document.createElement('div');
         const img = document.createElement('img');
+        const picture = document.createElement('img');
 
         mood.textContent = `mood: ${item.mood}`;
         geo.textContent = `${item.lat}°, ${item.lon}°`;
         const dateString = new Date(item.timestamp).toLocaleString();
         date.textContent = dateString;
         img.src = item.img64;
+        picture.src = item.picture;
 
-        root.append(mood, geo, date, img);
+        root.append(mood, geo, date, img, picture);
         document.body.append(root);
     }
     console.log(data);
