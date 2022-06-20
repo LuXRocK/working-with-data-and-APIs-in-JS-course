@@ -18,4 +18,14 @@ app.post('/api', (request, response) => {
     data.timestamp = timestamp;
     database.insert(data);
     response.json(data);
+});
+
+app.get('/api', (request, response) => {
+    database.find({}, (err, data) => {
+        if (err) {
+            response.end();
+            return;
+        }
+        response.json(data);
+    })
 })
