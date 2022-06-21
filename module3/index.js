@@ -39,8 +39,8 @@ app.get('/weather/:latlon', async (request, response) => {
     const lat = latlon[0];
     const lon = latlon[1];
     console.log(lat, lon);
-    // const api_key = '97b6e7e5e0151749788be3a5d34a0e19'
-    const api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=97b6e7e5e0151749788be3a5d34a0e19`;
+    const api_key = '97b6e7e5e0151749788be3a5d34a0e19'
+    const api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`;
     
     // const api_url = 'https://api.openweathermap.org/data/2.5/weather?lat=50.3249278&lon=18.7857186&appid=f417256e3985412b0df83d2ca7947de5'
     console.log(api_url);
