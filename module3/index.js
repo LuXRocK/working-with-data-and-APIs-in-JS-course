@@ -40,12 +40,19 @@ app.get('/weather/:latlon', async (request, response) => {
     const lon = latlon[1];
     console.log(lat, lon);
     const api_key = '97b6e7e5e0151749788be3a5d34a0e19'
-    const api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`;
-    
-    // const api_url = 'https://api.openweathermap.org/data/2.5/weather?lat=50.3249278&lon=18.7857186&appid=f417256e3985412b0df83d2ca7947de5'
-    console.log(api_url);
-    const fetch_response = await fetch(api_url);
-    const json = await fetch_response.json();
-    console.log(json);
-    response.json(json);
+
+    const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`;
+    const weather_response = await fetch(weather_url);
+    const weather_data = await weather_response.json();
+
+    const aq_url = `https://api.openaq.org/v2/latest?coordinates=${lat},${lon}`;
+    const aq_response = await fetch(aq_url);
+    const aq_data = await aq_response.json();
+
+    const data = {
+        weather: weather_data,
+        air_quality: aq_data
+    }
+    // console.log(json);
+    response.json(data);
 });

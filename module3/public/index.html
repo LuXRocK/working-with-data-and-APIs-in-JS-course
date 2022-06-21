@@ -12,12 +12,27 @@
     <div id="navigator">
         <a href="index.html">check in</a>    |    <a href="logs/logs.html">view checkins</a>
     </div>
-    <div id="location">
+    <!-- <div id="location">
         <p id="lat_lon"></p>
+    </div> -->
+    <!-- <p id="location">
+        The weather here at <span id="latitude"></span>, <span id="longitude"></span> 
+        is <span id="description"></span> with a temperature of <span id="temperature"></span>° Celcius.
+        The concentration of particulate matter (<span id="aq_parameter"></span>) is <span id="aq_value"></span> <span id="aq_units"></span> 
+        last read on <span id="aq_date"></span>
+    </p> -->
+
+    <div id="main_container">
+        <p id="weather_info">
+            I'm sitting out here at <span id="latitude"></span>,  <span id="longitude"></span> 
+            on this <span id="description"></span> day and it is <span id="temperature"></span>°C. outside.
+        </p>
+        <p id="aq_info">
+            The concentration of small carcinogenic particles (<span id="aq_parameter"></span>) 
+            I'm breating in is <span id="aq_value"></span> <span id="aq_units"></span>
+            and it was last measured on <span id="aq_date"></span>
+        </p>
     </div>
-    <p>
-        The weather here is <span id="description"></span> with a temperature of <span id="temperature"></span>° Celcius.
-    </p>
     <button id="checkIn">check in</button>
 
 

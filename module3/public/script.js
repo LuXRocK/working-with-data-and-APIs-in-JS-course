@@ -3,20 +3,33 @@ let lat, lon;
 if ('geolocation' in navigator) {
     console.log('geolocation available');
     navigator.geolocation.getCurrentPosition(async position  => {
-        lat = position.coords.latitude;
-        lon = position.coords.longitude;
+        try {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
 
-        document.getElementById('lat_lon').textContent = lat.toFixed(2)+'°' + ', '+lon.toFixed(2)+'°';
-        const api_url = `weather/${lat},${lon}`;
-        // const api_url = `/weather`;
-        // const api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=97b6e7e5e0151749788be3a5d34a0e19`;
-        const response = await fetch(api_url);
-        const json = await response.json();
-        document.getElementById('description').textContent = json.weather[0].description;
-        let temp = json.main.temp;
-        temp = temp - 273.15;
-        document.getElementById('temperature').textContent = temp.toFixed(2);
-        console.log(json);
+            document.getElementById('latitude').textContent = lat.toFixed(2)+'°';
+            document.getElementById('longitude').textContent = lon.toFixed(2)+'°';
+
+            const api_url = `weather/${lat},${lon}`;
+            const response = await fetch(api_url);
+            const json = await response.json();
+            console.log(json);
+            const weather = json.weather;
+            const air = json.air_quality.results[0].measurements[0];
+            console.log(json);
+
+            document.getElementById('description').textContent = weather.weather[0].description;
+            let temp = weather.main.temp;
+            temp = temp - 273.15;
+            document.getElementById('temperature').textContent = temp.toFixed(2);
+            document.getElementById('aq_parameter').textContent = air.parameter;
+            document.getElementById('aq_value').textContent = air.value;
+            document.getElementById('aq_units').textContent = air.unit;
+            document.getElementById('aq_date').textContent = air.lastUpdated;
+        } catch(error) {
+            console.log('something went wrong!!');
+            document.getElementById('aq_info').textContent = "Unfortunately there is no data about air quality at that location."
+        };
     });
 } else {
     console.log('geolocation unavailable')
