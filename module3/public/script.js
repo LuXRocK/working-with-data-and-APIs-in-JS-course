@@ -12,6 +12,10 @@ if ('geolocation' in navigator) {
         // const api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=97b6e7e5e0151749788be3a5d34a0e19`;
         const response = await fetch(api_url);
         const json = await response.json();
+        document.getElementById('description').textContent = json.weather[0].description;
+        let temp = json.main.temp;
+        temp = temp - 273.15;
+        document.getElementById('temperature').textContent = temp.toFixed(2);
         console.log(json);
     });
 } else {
