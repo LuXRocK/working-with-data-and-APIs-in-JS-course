@@ -1,6 +1,7 @@
 const express = require('express');
 const Datastore = require('nedb');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const app = express();
 app.listen(3002, () => console.log('listening at 3002'));
@@ -39,7 +40,7 @@ app.get('/weather/:latlon', async (request, response) => {
     const lat = latlon[0];
     const lon = latlon[1];
     console.log(lat, lon);
-    const api_key = '97b6e7e5e0151749788be3a5d34a0e19'
+    const api_key = process.env.API_KEY;
 
     const weather_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api_key}`;
     const weather_response = await fetch(weather_url);
